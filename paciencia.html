@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lançamento Paciência - Zona Oeste</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ff6b6b;
+        }
+        
+        .cta-header-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+        
+        .cta-header-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 90vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200') center/cover;
+            opacity: 0.2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 20px;
+        }
+        
+        .launch-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255,255,255,0.3);
+            letter-spacing: 2px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-light {
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .section-description {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .benefit-item {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            transform: rotate(-5deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-item:hover .benefit-icon {
+            transform: rotate(0deg);
+        }
+        
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+        
+        .benefit-text {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        .location-section {
+            background: linear-gradient(to bottom, white, #f8f9fa);
+        }
+        
+        .location-highlight {
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .location-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800') center/cover;
+            border-radius: 20px;
+        }
+        
+        .location-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .location-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .location-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .location-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .location-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .form-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+        }
+        
+        .form-wrapper {
+            background: white;
+            border-radius: 25px;
+            padding: 60px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .form-title {
+            color: #2c3e50;
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .form-subtitle {
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
+        .input-group label {
+            display: block;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #ecf0f1;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+        
+        .privacy-notice {
+            text-align: center;
+            color: #95a5a6;
+            font-size: 0.9rem;
+            margin-top: 25px;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .form-wrapper {
+                padding: 40px 25px;
+            }
+            
+            .location-highlight {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Paciência</div>
+            <a href="#formulario" class="cta-header-btn">Quero Informações</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="launch-tag">LANÇAMENTO NA PLANTA</div>
+            <h1 class="hero-title">Seu Novo Lar na Zona Oeste</h1>
+            <p class="hero-subtitle">Empreendimento exclusivo em Paciência com condições especiais de lançamento</p>
+            <a href="#formulario" class="hero-cta">Cadastre-se Agora</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Por Que Investir Agora?</h2>
+            <p class="section-description">Aproveite as vantagens exclusivas de comprar direto da construtora na fase de lançamento</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Preços de Lançamento</h3>
+                    <p class="benefit-text">Valores promocionais exclusivos para os primeiros compradores</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">📋</div>
+                    <h3 class="benefit-title">Direto da Construtora</h3>
+                    <p class="benefit-text">Negociação direta sem intermediários, com total transparência</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Condições Facilitadas</h3>
+                    <p class="benefit-text">Planos de pagamento personalizados durante a obra</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🏗️</div>
+                    <h3 class="benefit-title">Escolha Sua Unidade</h3>
+                    <p class="benefit-text">Variedade de plantas e andares disponíveis para escolha</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">📈</div>
+                    <h3 class="benefit-title">Valorização Garantida</h3>
+                    <p class="benefit-text">Região em desenvolvimento com infraestrutura em expansão</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <h3 class="benefit-title">Segurança Jurídica</h3>
+                    <p class="benefit-text">Documentação completa e registro garantido</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section location-section">
+        <div class="container">
+            <h2 class="section-title">Localização Privilegiada</h2>
+            <p class="section-description">Paciência - Zona Oeste do Rio de Janeiro</p>
+            
+            <div class="location-highlight">
+                <div class="location-image"></div>
+                <div class="location-content">
+                    <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; color: #2c3e50;">Tudo Perto de Você</h3>
+                    <ul class="location-list">
+                        <li>
+                            <div class="location-icon">🚇</div>
+                            <span>Próximo a estações de transporte</span>
+                        </li>
+                        <li>
+                            <div class="location-icon">🛒</div>
+                            <span>Comércio completo nas redondezas</span>
+                        </li>
+                        <li>
+                            <div class="location-icon">🏥</div>
+                            <span>Hospitais e clínicas próximos</span>
+                        </li>
+                        <li>
+                            <div class="location-icon">🎓</div>
+                            <span>Escolas e faculdades na região</span>
+                        </li>
+                        <li>
+                            <div class="location-icon">🌳</div>
+                            <span>Áreas de lazer e parques</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="formulario">
+        <div class="container">
+            <div class="form-wrapper">
+                <h2 class="form-title">Receba Todas as Informações</h2>
+                <p class="form-subtitle">Preencha o formulário e garanta acesso às plantas, valores e condições especiais</p>
+                
+                <form id="leadFormPaciencia">
+                    <div class="input-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="telefone">Telefone/WhatsApp</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="interesse">Seu Interesse</label>
+                        <select id="interesse" name="interesse" required>
+                            <option value="">Selecione...</option>
+                            <option value="primeira-moradia">Primeira Moradia</option>
+                            <option value="investimento">Investimento</option>
+                            <option value="upgrade">Upgrade de Imóvel</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Quero Receber Informações</button>
+                    
+                    <p class="privacy-notice">
+                        Seus dados estão protegidos e serão utilizados apenas para envio de informações sobre este empreendimento.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('leadFormPaciencia').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const leadData = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value,
+                interesse: document.getElementById('interesse').value,
+                empreendimento: 'Paciência - Zona Oeste',
+                data: new Date().toLocaleString('pt-BR')
+            };
+            
+            console.log('Lead capturado:', leadData);
+            
+            alert('Cadastro realizado com sucesso! Em breve você receberá todas as informações sobre o empreendimento.');
+            
+            this.reset();
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

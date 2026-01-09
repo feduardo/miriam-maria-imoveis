@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lançamento Campo Grande</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .top-bar {
+            background: #1a2332;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .top-bar strong {
+            color: #ffd700;
+        }
+        
+        .main-header {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .badge-new {
+            display: inline-block;
+            background: #ffd700;
+            color: #1a2332;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+        
+        .main-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.1;
+        }
+        
+        .main-subtitle {
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+        
+        .cta-primary {
+            display: inline-block;
+            background: #ffd700;
+            color: #1a2332;
+            padding: 20px 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-primary:hover {
+            background: #ffed4e;
+            transform: scale(1.05);
+        }
+        
+        .highlights-bar {
+            background: white;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.1);
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .highlights-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .highlight-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .highlight-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1a2332, #2d3e54);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+        
+        .highlight-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a2332;
+            margin-bottom: 5px;
+        }
+        
+        .highlight-desc {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        .content-section {
+            padding: 100px 20px;
+        }
+        
+        .content-section.dark {
+            background: #f5f5f5;
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-label {
+            color: #ffd700;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .section-heading {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1a2332;
+            margin-bottom: 15px;
+        }
+        
+        .section-text {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-box {
+            background: white;
+            padding: 45px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid #ffd700;
+        }
+        
+        .feature-box:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
+        
+        .feature-icon-box {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a2332, #2d3e54);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #ffd700;
+        }
+        
+        .feature-box h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a2332;
+            margin-bottom: 15px;
+        }
+        
+        .feature-box p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .location-showcase {
+            background: #1a2332;
+            color: white;
+            padding: 100px 20px;
+        }
+        
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .location-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+        
+        .location-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        
+        .location-points {
+            list-style: none;
+        }
+        
+        .location-points li {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .location-points li:last-child {
+            border-bottom: none;
+        }
+        
+        .point-marker {
+            width: 45px;
+            height: 45px;
+            background: #ffd700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #1a2332;
+            flex-shrink: 0;
+        }
+        
+        .location-image {
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800') center/cover;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .final-cta {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .cta-box {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 70px 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .cta-box h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a2332;
+            margin-bottom: 20px;
+        }
+        
+        .cta-box p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-field {
+            text-align: left;
+        }
+        
+        .form-field.full {
+            grid-column: 1 / -1;
+        }
+        
+        .form-field label {
+            display: block;
+            font-weight: 600;
+            color: #1a2332;
+            margin-bottom: 8px;
+        }
+        
+        .form-field input,
+        .form-field select {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-field input:focus,
+        .form-field select:focus {
+            outline: none;
+            border-color: #1a2332;
+        }
+        
+        .submit-cta {
+            width: 100%;
+            padding: 20px;
+            background: #1a2332;
+            color: #ffd700;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+        
+        .submit-cta:hover {
+            background: #2d3e54;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(26, 35, 50, 0.3);
+        }
+        
+        .form-notice {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-box {
+                padding: 40px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <strong>LANÇAMENTO EXCLUSIVO</strong> | Cadastre-se e garanta condições especiais
+    </div>
+
+    <header class="main-header">
+        <div class="header-content">
+            <div class="badge-new">NA PLANTA</div>
+            <h1 class="main-title">Campo Grande</h1>
+            <p class="main-subtitle">Viva em um dos bairros mais completos da Zona Oeste</p>
+            <a href="#cadastro" class="cta-primary">Garantir Minha Vaga</a>
+        </div>
+    </header>
+
+    <div class="highlights-bar">
+        <div class="highlights-container">
+            <div class="highlight-item">
+                <div class="highlight-icon">🏗️</div>
+                <div class="highlight-title">Construtora Renomada</div>
+                <div class="highlight-desc">Qualidade Garantida</div>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-icon">🛍️</div>
+                <div class="highlight-title">Próximo ao West Shopping</div>
+                <div class="highlight-desc">Conveniência Total</div>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-icon">💳</div>
+                <div class="highlight-title">Condições Especiais</div>
+                <div class="highlight-desc">Planos Facilitados</div>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-icon">📋</div>
+                <div class="highlight-title">Direto da Construtora</div>
+                <div class="highlight-desc">Sem Intermediários</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">OPORTUNIDADE ÚNICA</div>
+                <h2 class="section-heading">Por Que Escolher Este Empreendimento?</h2>
+                <p class="section-text">Uma combinação perfeita de localização, qualidade e valor</p>
+            </div>
+            
+            <div class="features-layout">
+                <div class="feature-box">
+                    <div class="feature-icon-box">💰</div>
+                    <h3>Investimento Inteligente</h3>
+                    <p>Preços de lançamento com tabelas dinâmicas que garantem o melhor momento para investir. Valorização garantida em região consolidada.</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-icon-box">🎨</div>
+                    <h3>Plantas Diversificadas</h3>
+                    <p>Diversas opções de plantas para você escolher a que melhor se adequa ao seu estilo de vida e necessidades da sua família.</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-icon-box">🏢</div>
+                    <h3>Infraestrutura Completa</h3>
+                    <p>Áreas de lazer, segurança 24h, salão de festas e muito mais para garantir conforto e qualidade de vida.</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-icon-box">⏰</div>
+                    <h3>Acompanhe a Obra</h3>
+                    <p>Transparência total no andamento da construção com atualizações regulares e visitas programadas ao canteiro de obras.</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-icon-box">✅</div>
+                    <h3>Documentação Segura</h3>
+                    <p>Toda documentação regularizada, contratos registrados e garantias asseguradas pela construtora.</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-icon-box">🎁</div>
+                    <h3>Benefícios Exclusivos</h3>
+                    <p>Condições especiais de pagamento durante a obra e vantagens para os primeiros compradores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location-showcase">
+        <div class="location-grid">
+            <div class="location-content">
+                <h2>Localização Estratégica em Campo Grande</h2>
+                <p>Um dos bairros mais completos e valorizados da Zona Oeste, com toda infraestrutura que você precisa.</p>
+                
+                <ul class="location-points">
+                    <li>
+                        <div class="point-marker">🛒</div>
+                        <span>Próximo ao West Shopping e comércio variado</span>
+                    </li>
+                    <li>
+                        <div class="point-marker">🚌</div>
+                        <span>Acesso facilitado por BRT e transporte público</span>
+                    </li>
+                    <li>
+                        <div class="point-marker">🏥</div>
+                        <span>Hospitais e clínicas de referência</span>
+                    </li>
+                    <li>
+                        <div class="point-marker">🎓</div>
+                        <span>Escolas e universidades renomadas</span>
+                    </li>
+                    <li>
+                        <div class="point-marker">🌳</div>
+                        <span>Praças e áreas de lazer para toda família</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="location-image"></div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="cadastro">
+        <div class="cta-box">
+            <h2>Receba Todas as Informações</h2>
+            <p>Preencha o formulário e tenha acesso às plantas, tabelas de preços atualizadas e condições especiais</p>
+            
+            <form id="leadFormCampoGrande">
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="telefone">Telefone/WhatsApp</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    
+                    <div class="form-field full">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-field full">
+                        <label for="perfil">Qual seu perfil?</label>
+                        <select id="perfil" name="perfil" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="primeira-casa">Procuro minha primeira casa</option>
+                            <option value="investidor">Sou investidor</option>
+                            <option value="upgrade">Quero fazer upgrade</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-cta">Quero Receber Informações</button>
+                
+                <p class="form-notice">
+                    Seus dados estão protegidos. Utilizamos apenas para envio de informações sobre este empreendimento.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('leadFormCampoGrande').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                nome: document.getElementById('nome').value,
+                telefone: document.getElementById('telefone').value,
+                email: document.getElementById('email').value,
+                perfil: document.getElementById('perfil').value,
+                empreendimento: 'Campo Grande - Zona Oeste',
+                timestamp: new Date().toLocaleString('pt-BR')
+            };
+            
+            console.log('Lead capturado:', formData);
+            
+            alert('Cadastro realizado! Em breve você receberá todas as informações sobre plantas, valores e condições especiais.');
+            
+            this.reset();
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galpão Comercial - Campo Grande</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .location {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border-top: 4px solid #3498db;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+        
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.7;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 40px auto 0;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+        
+        .form-container h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #34495e;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+        }
+        
+        .privacy-text {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+        
+        .investment-banner {
+            background: #34495e;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .investment-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2ecc71;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .investment-stats {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="badge">OPORTUNIDADE DE INVESTIMENTO</div>
+            <h1>Galpão Comercial de Alto Padrão</h1>
+            <p class="subtitle">Localização estratégica próximo ao West Shopping</p>
+            <div class="location">
+                <span>📍</span>
+                <span>Campo Grande, Rio de Janeiro</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="investment-banner">
+        <h2>Um Investimento Sólido e Rentável</h2>
+        <div class="investment-stats">
+            <div class="stat">
+                <div class="stat-number">6%</div>
+                <div class="stat-label">Comissão Atrativa</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Pronto para Locação</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">A+</div>
+                <div class="stat-label">Localização Premium</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏢</div>
+                <h3>Localização Estratégica</h3>
+                <p>Situado em Campo Grande, próximo ao West Shopping, com fácil acesso às principais vias de escoamento da região.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3>Versatilidade Comercial</h3>
+                <p>Espaço ideal para diversos segmentos: logística, indústria, armazenagem ou centro de distribuição.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Alto Potencial de Valorização</h3>
+                <p>Região em franco desenvolvimento, com infraestrutura consolidada e demanda crescente por imóveis comerciais.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔑</div>
+                <h3>Pronto para Locação</h3>
+                <p>Oportunidade de renda imediata através de locação comercial, com mercado aquecido na região.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚖️</div>
+                <h3>Documentação Regular</h3>
+                <p>Imóvel em processo final de inventário, com toda documentação sendo regularizada para transferência.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Negociação Facilitada</h3>
+                <p>Condições especiais de negociação e assessoria completa em todo o processo de aquisição.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>Garanta Mais Informações Sobre Este Investimento</h2>
+        <p style="font-size: 1.2rem; margin-top: 15px; opacity: 0.95;">Preencha o formulário e receba um estudo completo sobre esta oportunidade</p>
+        
+        <div class="form-container">
+            <h3>Solicite Informações Detalhadas</h3>
+            <form id="leadForm">
+                <div class="form-group">
+                    <label for="nome">Nome Completo *</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">Telefone/WhatsApp *</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensagem">Mensagem (opcional)</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte-nos mais sobre seu interesse..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Quero Mais Informações</button>
+                
+                <p class="privacy-text">
+                    Seus dados estão seguros conosco e serão utilizados apenas para contato sobre este imóvel.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value,
+                mensagem: document.getElementById('mensagem').value,
+                imovel: 'Galpão Campo Grande',
+                data: new Date().toLocaleString('pt-BR')
+            };
+            
+            console.log('Lead capturado:', formData);
+            
+            alert('Obrigado pelo seu interesse! Em breve entraremos em contato com informações detalhadas sobre o imóvel.');
+            
+            this.reset();
+        });
+    </script>
+</body>
+</html>
