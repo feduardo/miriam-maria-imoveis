@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva Naturalis | Lançamento Exclusivo - Paciência/RJ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: linear-gradient(135deg, #3D2817 0%, #5C3D2E 100%);
+            color: white;
+            padding: 12px 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .top-bar strong {
+            color: #F4A460;
+            font-weight: 600;
+        }
+
+        /* Hero Section com Video/Imagem */
+        .hero {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(61, 40, 23, 0.85) 0%, rgba(92, 61, 46, 0.75) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(244, 164, 96, 0.2);
+            border: 2px solid #F4A460;
+            color: #F4A460;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero .subtitle {
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #F4A460;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            padding: 20px 60px;
+            background: #F4A460;
+            color: #3D2817;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(244, 164, 96, 0.4);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(244, 164, 96, 0.6);
+            background: #E8915E;
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(90deg, #E8915E 0%, #F4A460 100%);
+            color: #3D2817;
+            padding: 25px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.15rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .alert-banner i {
+            margin-right: 12px;
+            font-size: 1.3rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: #F4A460;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #3D2817;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.15rem;
+            color: #666;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.9;
+        }
+
+        /* Galeria de Imagens */
+        .gallery-section {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(61, 40, 23, 0.25);
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(61, 40, 23, 0.95), transparent);
+            color: white;
+            padding: 30px 20px 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 45px 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(61, 40, 23, 0.15);
+            border-left-color: #F4A460;
+        }
+
+        .feature-icon {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #F4A460 0%, #E8915E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: linear-gradient(135deg, #3D2817 0%, #5C3D2E 100%);
+            transform: scale(1.1);
+        }
+
+        .feature-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: #3D2817;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Plantas */
+        .plantas-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .plantas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 50px;
+        }
+
+        .planta-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 2px solid #f0f0f0;
+        }
+
+        .planta-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 60px rgba(61, 40, 23, 0.2);
+            border-color: #F4A460;
+        }
+
+        .planta-header {
+            background: linear-gradient(135deg, #3D2817 0%, #5C3D2E 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+        }
+
+        .planta-badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: #F4A460;
+            color: #3D2817;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .planta-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .planta-header p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+
+        .planta-body {
+            padding: 45px;
+        }
+
+        .planta-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin-bottom: 35px;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .spec-icon {
+            width: 50px;
+            height: 50px;
+            background: #fff5eb;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .spec-icon i {
+            font-size: 1.3rem;
+            color: #F4A460;
+        }
+
+        .spec-info {
+            flex: 1;
+        }
+
+        .spec-label {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 4px;
+        }
+
+        .spec-value {
+            font-size: 1.15rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .planta-highlight {
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d1 100%);
+            border-left: 4px solid #F4A460;
+            padding: 20px 25px;
+            font-size: 0.95rem;
+            color: #3D2817;
+            margin-top: 30px;
+            font-weight: 600;
+            border-radius: 5px;
+        }
+
+        .planta-highlight i {
+            color: #F4A460;
+            margin-right: 10px;
+        }
+
+        /* Amenities */
+        .amenities-section {
+            background: white;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .amenity-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 35px 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 20px rgba(0,0,0,0.06);
+            border: 2px solid #f0f0f0;
+        }
+
+        .amenity-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 35px rgba(61, 40, 23, 0.15);
+            border-color: #F4A460;
+            background: linear-gradient(135deg, #3D2817 0%, #5C3D2E 100%);
+        }
+
+        .amenity-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #F4A460 0%, #E8915E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .amenity-item:hover .amenity-icon {
+            background: white;
+        }
+
+        .amenity-icon i {
+            font-size: 1.6rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .amenity-item:hover .amenity-icon i {
+            color: #F4A460;
+        }
+
+        .amenity-item p {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+
+        .amenity-item:hover p {
+            color: white;
+        }
+
+        /* Location Benefits (SEM endereço exato) */
+        .location-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .location-card {
+            background: white;
+            padding: 40px 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .location-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px rgba(61, 40, 23, 0.15);
+            border-top-color: #F4A460;
+        }
+
+        .location-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #F4A460 0%, #E8915E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .location-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .location-card h3 {
+            font-size: 1.4rem;
+            color: #3D2817;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .location-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #F4A460 0%, #E8915E 100%);
+            color: #3D2817;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .price-highlight {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 35px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .benefits-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .benefit-badge {
+            background: rgba(61, 40, 23, 0.15);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: 2px solid #3D2817;
+        }
+
+        .benefit-badge i {
+            margin-right: 8px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 25px 70px;
+            background: #3D2817;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(61, 40, 23, 0.4);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 50px rgba(61, 40, 23, 0.6);
+            background: #2a1c0f;
+        }
+
+        .cta-button i {
+            margin-right: 12px;
+            font-size: 1.4rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #F4A460;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .footer-info {
+            margin: 35px 0;
+            opacity: 0.85;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+
+        .footer-disclaimer {
+            margin-top: 50px;
+            padding-top: 35px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.6;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .gallery-grid,
+            .plantas-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-stats {
+                gap: 35px;
+            }
+
+            .stat-number {
+                font-size: 2.3rem;
+            }
+
+            .features-grid,
+            .plantas-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .planta-specs {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2.3rem;
+            }
+
+            .price-highlight {
+                font-size: 2.2rem;
+            }
+
+            .benefits-list {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .cta-primary,
+            .cta-button {
+                padding: 18px 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <strong>LANÇAMENTO EXCLUSIVO</strong> • Entrega Janeiro/2027 • Condições Especiais Durante a Obra
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- SUBSTITUA este comentário por: <video class="hero-media" autoplay muted loop playsinline><source src="SEU_VIDEO.mp4" type="video/mp4"></video> -->
+        <!-- OU uma imagem: <img class="hero-media" src="SUA_IMAGEM.jpg" alt="Reserva Naturalis"> -->
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Lançamento Paciência/RJ</span>
+            <h1>Reserva Naturalis</h1>
+            <p class="subtitle">Natureza e lazer em um só lugar</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">A partir de 42m²</span>
+                    <span class="stat-label">Área Privativa</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2 Quartos</span>
+                    <span class="stat-label">Apartamentos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">9.000m²</span>
+                    <span class="stat-label">Área Verde</span>
+                </div>
+            </div>
+
+            <a href="#contato" class="cta-primary">Quero Mais Informações</a>
+        </div>
+    </section>
+
+    <!-- Alert Banner -->
+    <div class="alert-banner">
+        <i class="fas fa-gift"></i>
+        Use seu FGTS + Financiamento Facilitado • Em frente ao BRT
+    </div>
+
+    <!-- Galeria -->
+    <section class="gallery-section">
+        <div class="section-header">
+            <span class="section-tag">Conheça o Empreendimento</span>
+            <h2 class="section-title">Seu novo lar te espera</h2>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- SUBSTITUA os src="" pelas suas imagens/vídeos reais -->
+            <div class="gallery-item">
+                <!-- <img src="imagem_portaria.jpg" alt="Portaria"> -->
+                <div class="gallery-label">Portaria Moderna</div>
+            </div>
+            <div class="gallery-item">
+                <!-- <img src="imagem_fachada.jpg" alt="Fachada"> -->
+                <div class="gallery-label">Fachada</div>
+            </div>
+            <div class="gallery-item">
+                <!-- <video autoplay muted loop playsinline><source src="video_areas_comuns.mp4" type="video/mp4"></video> -->
+                <div class="gallery-label">Áreas Comuns</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Diferenciais</span>
+                <h2 class="section-title">Viva com mais qualidade</h2>
+                <p class="section-description">Um empreendimento pensado para proporcionar conforto, segurança e bem-estar para você e sua família</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>9.000m² de Área Verde</h3>
+                    <p>Viva em contato com a natureza. Paisagismo completo com árvores nativas preservadas para seu bem-estar diário.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <h3>Em Frente ao BRT</h3>
+                    <p>Mobilidade urbana na porta de casa. Acesso rápido e fácil para toda a região metropolitana.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Use seu FGTS</h3>
+                    <p>Facilite a compra do seu imóvel utilizando seu FGTS como parte do pagamento ou entrada.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3>Lazer Completo</h3>
+                    <p>Piscina, churrasqueira, fitness, brinquedoteca, parquinho e muito mais para toda a família.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Segurança Total</h3>
+                    <p>Condomínio fechado com portaria 24h e sistema completo de segurança.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>Construtora Engefic</h3>
+                    <p>Tradição e qualidade garantida. Entrega programada para janeiro de 2027.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plantas -->
+    <section class="plantas-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Plantas</span>
+                <h2 class="section-title">Escolha seu apartamento</h2>
+                <p class="section-description">A partir de 42m² com 2 quartos, projetados para máximo conforto</p>
+            </div>
+
+            <div class="plantas-grid">
+                <div class="planta-card">
+                    <div class="planta-header">
+                        <span class="planta-badge">Garden</span>
+                        <h3>Tipo Garden</h3>
+                        <p>1º Andar com quintal privativo</p>
+                    </div>
+                    <div class="planta-body">
+                        <div class="planta-specs">
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Área Interna</div>
+                                    <div class="spec-value">42m²</div>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Quintal Privativo</div>
+                                    <div class="spec-value">38m²</div>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-bed"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Quartos</div>
+                                    <div class="spec-value">2 quartos</div>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-bath"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Banheiro</div>
+                                    <div class="spec-value">1 banheiro</div>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Andar</div>
+                                    <div class="spec-value">1º andar</div>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-ruler-combined"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Área Total</div>
+                                    <div class="spec-value">80m²</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="planta-highlight">
+                            <i class="fas fa-check-circle"></i> Ideal para quem busca mais privacidade e contato com a natureza
+                        </div>
+                    </div>
+                </div>
+
+                <div class="planta-card">
+                    <div class="planta-header">
+                        <span class="planta-badge">Padrão</span>
+                        <h3>Tipo Padrão</h3>
+                        <p>Do 2º ao 5º andar</p>
+                    </div>
+                    <div class="planta-body">
+                        <div class="planta-specs">
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-ruler-combined"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Área Privativa</div>
+                                    <div class="spec-value">42m²</div>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-bed"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Quartos</div>
+                                    <div class="spec-value">2 quartos</div>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-bath"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Banheiro</div>
+                                    <div class="spec-value">1 banheiro</div>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-couch"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Sala</div>
+                                    <div class="spec-value">Integrada</div>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Andar</div>
+                                    <div class="spec-value">2º ao 5º</div>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <div class="spec-info">
+                                    <div class="spec-label">Ventilação</div>
+                                    <div class="spec-value">Natural</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="planta-highlight">
+                            <i class="fas fa-check-circle"></i> Perfeito para quem valoriza vista e iluminação natural
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities -->
+    <section class="amenities-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Lazer & Bem-Estar</span>
+                <h2 class="section-title">Infraestrutura completa</h2>
+                <p class="section-description">Tudo que você e sua família precisam sem sair de casa</p>
+            </div>
+
+            <div class="amenities-grid">
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <p>Piscina</p>
+                </div>
+
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <p>Churrasqueira</p>
+                </div>
+
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <p>Brinquedoteca</p>
+                </div>
+
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <p>Espaço Fitness</p>
+                </div>
+
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <p>Playground</p>
+                </div>
+
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <p>Bicicletário</p>
+                </div>
+
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-chess"></i>
+                    </div>
+                    <p>Jogos Externos</p>
+                </div>
+
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <p>Minimercado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Benefits (SEM endereço exato) -->
+    <section class="location-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Localização</span>
+                <h2 class="section-title">Tudo pertinho de você</h2>
+                <p class="section-description">Localização estratégica em Paciência com acesso facilitado a tudo que você precisa</p>
+            </div>
+
+            <div class="location-grid">
+                <div class="location-card">
+                    <div class="location-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <h3>BRT na Porta</h3>
+                    <p>Mobilidade urbana com acesso direto ao BRT. Deslocamento rápido para toda região metropolitana.</p>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Comércio Completo</h3>
+                    <p>Supermercados, farmácias, padarias e lojas diversas na região para sua comodidade.</p>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Escolas Próximas</h3>
+                    <p>Opções de ensino infantil, fundamental e médio para a educação dos seus filhos.</p>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3>Saúde</h3>
+                    <p>Clínicas, postos de saúde e farmácias próximas para cuidar de você e sua família.</p>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Gastronomia</h3>
+                    <p>Restaurantes, lanchonetes e opções gastronômicas variadas na região.</p>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-icon">
+                        <i class="fas fa-subway"></i>
+                    </div>
+                    <h3>Transporte</h3>
+                    <p>Fácil acesso a linhas de ônibus, BRT e trem para toda zona oeste do Rio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contato">
+        <div class="cta-content">
+            <h2>Realize o sonho da casa própria</h2>
+            <p>Aproveite as condições especiais durante a fase de construção</p>
+            
+            <div class="price-highlight">A partir de R$ 215.000</div>
+            
+            <div class="benefits-list">
+                <div class="benefit-badge">
+                    <i class="fas fa-hand-holding-usd"></i> Use seu FGTS
+                </div>
+                <div class="benefit-badge">
+                    <i class="fas fa-percentage"></i> Financiamento
+                </div>
+                <div class="benefit-badge">
+                    <i class="fas fa-gift"></i> Condições Especiais
+                </div>
+            </div>
+
+            <p style="font-size: 1.15rem; margin-top: 25px;">Entre em contato agora e garanta seu apartamento!</p>
+            
+            <a href="https://wa.me/5521999999999?text=Olá! Tenho interesse no Reserva Naturalis e gostaria de mais informações sobre valores, plantas e condições de pagamento." class="cta-button">
+                <i class="fab fa-whatsapp"></i> Falar com Consultor
+            </a>
+            
+            <p style="margin-top: 35px; font-size: 0.95rem; opacity: 0.85;">
+                Valores e condições sujeitos a alteração. Consulte disponibilidade.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">Reserva Naturalis</div>
+            <div class="footer-info">
+                <p><strong>Construtora Engefic</strong></p>
+                <p>Paciência - Rio de Janeiro/RJ</p>
+                <p>Lançamento 2024 • Entrega Janeiro/2027</p>
+            </div>
+            <div class="footer-disclaimer">
+                <p>As imagens, plantas, valores e informações são meramente ilustrativos e estão sujeitos a alterações sem aviso prévio.</p>
+                <p>Consulte um de nossos consultores para informações atualizadas sobre disponibilidade, plantas, valores e condições de pagamento.</p>
+                <p style="margin-top: 20px;">© 2026 Reserva Naturalis. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
